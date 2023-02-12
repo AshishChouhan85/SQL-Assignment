@@ -2,7 +2,7 @@
 
 ![image](https://user-images.githubusercontent.com/120089356/218325548-d4b9d5da-9388-4a32-bb32-c1efb9bd77af.png)
 
-```
+```SQL
 # CREATING A DATABASE
 CREATE SCHEMA DB;
 USE DB;
@@ -29,4 +29,5 @@ GROUP BY Department;
 ```
 
 OUTPUT:
+
 ![image](https://user-images.githubusercontent.com/120089356/218325697-48a2cbea-e728-4bc7-a3bc-4c29cf542a97.png)
