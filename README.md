@@ -1,6 +1,10 @@
 # SQL-Assignment
 
+QUESTION 1.
+
 ![image](https://user-images.githubusercontent.com/120089356/218325548-d4b9d5da-9388-4a32-bb32-c1efb9bd77af.png)
+
+ANSWER 1.
 
 ```SQL
 # CREATING A DATABASE
@@ -31,3 +35,123 @@ GROUP BY Department;
 OUTPUT:
 
 ![image](https://user-images.githubusercontent.com/120089356/218325697-48a2cbea-e728-4bc7-a3bc-4c29cf542a97.png)
+
+QUESTION 2.
+
+![image](https://user-images.githubusercontent.com/120089356/218325898-01f42b51-8b86-44c0-bd98-dc1e3efdee25.png)
+
+ANSWER 2.
+
+```SQL
+# USING DATABASE
+USE DB;
+
+# CREATING DATABASE
+CREATE TABLE TABLE2(Name_ char, Jan INT, Feb INT, Mar INT);
+
+# INSERTING VALUES
+INSERT INTO TABLE2 VALUES('X', 5200, 9093, 3832);
+INSERT INTO TABLE2 VALUES('Y', 9023, 8942, 4000);
+INSERT INTO TABLE2 VALUES('Z', 9834, 8197, 9903);
+INSERT INTO TABLE2 VALUES('W', 3244, 4321, 0293);
+
+# VIEWING THE TABLE
+SELECT * FROM TABLE2;
+
+# ANSWER 2
+SELECT Name_, 
+CASE 
+	WHEN Jan>Feb AND Jan>Mar
+		THEN Jan 
+	WHEN Feb>Mar
+		THEN Feb
+	ELSE Mar
+END AS 'Value',
+
+CASE 
+	WHEN Jan>Feb AND Jan>Mar
+		THEN 'Jan' 
+	WHEN Feb>Mar
+		THEN 'Feb'
+	ELSE 'Mar'
+END AS 'Month'
+FROM TABLE2;
+```
+
+OUTPUT:
+
+![image](https://user-images.githubusercontent.com/120089356/218326439-cc9be7b6-c16d-470e-87de-a5bbedf8943d.png)
+
+QUESTION 3.
+
+![image](https://user-images.githubusercontent.com/120089356/218326488-54ef3411-e334-4227-851e-5b8a8c4f360f.png)
+
+```SQL
+# USING DATABASE
+USE DB;
+
+# CREATING DATABASE
+CREATE TABLE TABLE3(Candidate_ID INT, Marks INT);
+
+INSERT INTO TABLE3 VALUES(1, 98);
+INSERT INTO TABLE3 VALUES(2, 78);
+INSERT INTO TABLE3 VALUES(3, 87);
+INSERT INTO TABLE3 VALUES(4, 98);
+INSERT INTO TABLE3 VALUES(5, 78);
+
+# VIEWING TABLE
+SELECT * FROM TABLE3;
+
+# ANSWER 3
+SELECT T3.Marks, T3.Rank, GROUP_CONCAT(T3.Candidate_ID) AS Candidate_ID
+FROM(SELECT *,
+DENSE_RANK() OVER (ORDER BY Marks DESC) AS 'Rank'
+FROM TABLE3) AS T3
+GROUP BY Marks
+ORDER BY Marks DESC;
+```
+
+OUTPUT:
+
+![image](https://user-images.githubusercontent.com/120089356/218326630-a7fd299e-eee4-48a6-9e43-b65ad5568c67.png)
+
+QUESTION 4.
+
+![image](https://user-images.githubusercontent.com/120089356/218326716-1736c121-51a2-427b-8e9f-502990e3968e.png)
+
+ANSWER 4.
+
+```SQL
+# USING DATABASE
+USE DB;
+
+# CREATING TABLE
+CREATE TABLE TABLE4(Candidate_ID INT,
+Email VARCHAR(20));
+
+# INSERTING VALUES IN TABLE
+INSERT INTO TABLE4 VALUES(45,'abc@gmail.com');
+INSERT INTO TABLE4 VALUES(23,'def@yahoo.com');
+INSERT INTO TABLE4 VALUES(34,'abc@gmail.com');
+INSERT INTO TABLE4 VALUES(21,'bcf@gmail.com');
+INSERT INTO TABLE4 VALUES(94,'def@yahoo.com');
+
+# VIEWING THE TABLE
+SELECT * FROM TABLE4;
+
+# DELETING REQUIRED TABLE
+DELETE FROM TABLE4
+WHERE Candidate_ID NOT IN(
+SELECT * FROM(
+SELECT MIN(Candidate_ID)
+FROM TABLE4
+GROUP BY Email) AS LST);
+```
+
+OUTPUT:
+
+![image](https://user-images.githubusercontent.com/120089356/218326867-a3b2317f-bd2b-4680-9de4-bf122c0c6727.png)
+
+
+
+
