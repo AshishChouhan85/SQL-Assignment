@@ -39,7 +39,7 @@
 ## Shubham's code
 
 1. Q1:
-    * He use ```SUM()`` function to count number of males and females and then grouped them by department.
+    * He use ```SUM()``` function to count number of males and females and then grouped them by department.
 
 2. Q2:
     * He first made a table named data using union of three months. This table was similar to Dhruv's table.
